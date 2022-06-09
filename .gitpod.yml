@@ -1,0 +1,7 @@
+
+tasks:
+  - init: |
+      docker rm -f $(docker ps -a -q)
+      STARTER_MODE=cluster ./docker/start_db.sh
+      ./docker/start_spark_3.2.sh
+  - command: mvn test
